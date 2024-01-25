@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Rockway Robotics Scouting App</title>
+        <meta name="description" content="A scouting app built for Rockway Robotics - Team 8089">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <link rel="manifest" href="manifest.json">
+        <script src="html5-qrcode.min.js"></script>
+        <meta name="theme-color" content="#A71F28"/>
+        <link rel="apple-touch-icon" href="icons/apple-icon-180.png">
+    </head>
+    <body>
+        <div class="form">
+            <h1>Rockway Robotics</h1>
+            <noscript><h4>You aren't using javascript which is really cool but also that breaks this whole site so please enable javascript</h4></noscript>
+              <h3>QR CODE:</h3>
+              <div style="width: 600px" id="reader"></div>
+            
+          
+            <div id="qrcode-container" style="background-color: white; padding: 25px;">
+              <div id="qrcode" class="qrcode"></div>
+            </div>
+          
+            <script type="module">
+              function onScanSuccess(decodedText, decodedResult) {
+              // Handle on success condition with the decoded text or result.
+              console.log(`Scan result: ${decodedText}`, decodedResult);
+              }
+
+              var html5QrcodeScanner = new Html5QrcodeScanner(
+                "reader", { fps: 10, qrbox: 250 });
+
+            html5QrcodeScanner.render(onScanSuccess);
+          </script>
+          </div>
+          <script>
+              if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/service-worker.js');
+              }
+          </script>
+    </body>
+</html>
