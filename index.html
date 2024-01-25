@@ -18,17 +18,39 @@
             <noscript><h4>You aren't using javascript which is really cool but also that breaks this whole site so please enable javascript</h4></noscript>
               <h3>QR CODE:</h3>
               <div style="width: 600px" id="reader"></div>
-            
-          
-            <div id="qrcode-container" style="background-color: white; padding: 25px;">
-              <div id="qrcode" class="qrcode"></div>
-            </div>
+
+              <h3>QR CODE DATA:</h3>
+              <table id="qrTable"></table>
           
             <script type="module">
+              var scannedQRCodes = [];
+
               function onScanSuccess(decodedText, decodedResult) {
-              // Handle on success condition with the decoded text or result.
-              console.log(`Scan result: ${decodedText}`, decodedResult);
-              }
+    // Parse the decodedText as JSON
+    var decodedJson;
+    try {
+      decodedJson = JSON.parse(decodedText);
+    } catch (e) {
+      console.error("Invalid JSON format: ", decodedText);
+      return;
+    }
+
+    // Handle on success condition with the decoded text or result.
+    if (!scannedQRCodes.some(qrCode => JSON.stringify(qrCode) === JSON.stringify(decodedJson))) {
+      // If it's not in the array, add it to the array
+      scannedQRCodes.push(decodedJson);
+
+      // Create a new row in the HTML table with the JSON data
+      var table = document.getElementById('qrTable');
+      var row = table.insertRow();
+      Object.values(decodedJson).forEach(text => {
+        var cell = row.insertCell();
+        cell.textContent = text;
+      });
+    }
+
+    console.log(`Scan result: ${decodedText}`, decodedResult);
+  }
 
               var html5QrcodeScanner = new Html5QrcodeScanner(
                 "reader", { fps: 10, qrbox: 250 });
