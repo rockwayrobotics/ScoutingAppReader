@@ -1,7 +1,7 @@
 {
     "name": "Rockway Robotics Scouting App",
     "short_name": "Rockway Scouting",
-    "start_url": "/",
+    "start_url": "/ScoutingAppReader/",
     "icons": [
         {
             "src": "icons/manifest-icon-192.maskable.png",
