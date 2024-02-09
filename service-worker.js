@@ -7,14 +7,14 @@ self.addEventListener("install", event => {
 	event.waitUntil(
 		caches.open(cacheName).then(cache => {
 			return cache.addAll([
-				"/ScoutingAppReader/",
-                "ScoutingAppReader/index.html",
-                "ScoutingAppReader/manifest.json",
-				"ScoutingAppReader/html5-qrcode.min.js",
-                "ScoutingAppReader/style.css",
-                "ScoutingAppReader/icons/manifest-icon-192.maskable.png",
-                "ScoutingAppReader/icons/manifest-icon-512.maskable.png",
-                "ScoutingAppReader/icons/apple-icon-180.png",
+				"/",
+                "index.html",
+                "manifest.json",
+				"html5-qrcode.min.js",
+                "style.css",
+                "icons/manifest-icon-192.maskable.png",
+                "icons/manifest-icon-512.maskable.png",
+                "icons/apple-icon-180.png",
 			]);
 		})
 	);
