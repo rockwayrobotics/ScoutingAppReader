@@ -1,62 +1,73 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Rockway Robotics Scouting App</title>
-        <meta name="description" content="A scouting app built for Rockway Robotics - Team 8089">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css"> <link rel="manifest" href="manifest.json"> <script src="html5-qrcode.min.js"></script>
-        <meta name="theme-color" content="#A71F28"/>
-        <link rel="apple-touch-icon" href="icons/apple-icon-180.png">
-    </head>
-    <body>
-        <div class="form">
-            <h1>Rockway Robotics</h1>
-            <noscript><h4>You aren't using javascript which is really cool but also that breaks this whole site so please enable javascript</h4></noscript>
-              <div style="width: 600px" id="reader"></div>
-              <h3>QR CODE DATA:</h3>
-              <table id="qrTable"></table>
-            <script type="module">
-              var scannedQRCodes = [];
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Rockway Robotics Scouting App</title>
+    <meta
+      name="description"
+      content="A scouting app built for Rockway Robotics - Team 8089"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <script src="html5-qrcode.min.js"></script>
+    <meta name="theme-color" content="#A71F28" />
+    <link rel="apple-touch-icon" href="icons/apple-icon-180.png" />
+  </head>
+  <body>
+    <div class="form">
+      <h1>Rockway Robotics</h1>
+      <noscript
+        ><h4>
+          You aren't using javascript which is really cool but also that breaks
+          this whole site so please enable javascript
+        </h4></noscript
+      >
+      <div style="width: 600px" id="reader"></div>
+      <h3>QR CODE DATA:</h3>
+      <table id="qrTable"></table>
+      <script type="module">
+        var scannedQRCodes = [];
 
-              function onScanSuccess(decodedText, decodedResult) {
+        function onScanSuccess(decodedText, decodedResult) {
+          // add string to a new row on the table, split by commas and add each value to a new cell. add to array to prevent duplicates
+          if (!scannedQRCodes.includes(decodedText)) {
+            scannedQRCodes.push(decodedText);
+            var table = document.getElementById("qrTable");
+            var row = table.insertRow(-1);
+            var cells = decodedText.split(",");
+            for (var i = 0; i < cells.length; i++) {
+              var cell = row.insertCell(i);
 
-              // add string to a new row on the table, split by commas and add each value to a new cell. add to array to prevent duplicates
-              if (!scannedQRCodes.includes(decodedText)) {
-                scannedQRCodes.push(decodedText);
-                var table = document.getElementById("qrTable");
-                var row = table.insertRow(-1);
-                var cells = decodedText.split(",");
-                for (var i = 0; i < cells.length; i++) {
-                  var cell = row.insertCell(i);
-
-                  var cellValue = cells[i];
-                  if (cellValue.startsWith('"') && cellValue.endsWith('"')) {
-                    cellValue = cellValue.slice(1, -1);
-                  } else if (cellValue.startsWith('"')) {
-                    cellValue = cellValue.slice(1);
-                  } else if (cellValue.endsWith('"')) {
-                    cellValue = cellValue.slice(0, -1);
-                  }
-
-                  cell.innerHTML = cellValue;
-                }
-    }
-
-    console.log(`Scan result: ${decodedText}`, decodedResult);
-  }
-
-              var html5QrcodeScanner = new Html5QrcodeScanner(
-                "reader", { fps: 10, qrbox: 250 });
-
-            html5QrcodeScanner.render(onScanSuccess);
-          </script>
-          </div>
-          <script>
-              if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('/service-worker.js');
+              var cellValue = cells[i];
+              if (cellValue.startsWith('"') && cellValue.endsWith('"')) {
+                cellValue = cellValue.slice(1, -1);
+              } else if (cellValue.startsWith('"')) {
+                cellValue = cellValue.slice(1);
+              } else if (cellValue.endsWith('"')) {
+                cellValue = cellValue.slice(0, -1);
               }
-          </script>
-    </body>
+
+              cell.innerHTML = cellValue;
+            }
+          }
+
+          console.log(`Scan result: ${decodedText}`, decodedResult);
+        }
+
+        var html5QrcodeScanner = new Html5QrcodeScanner("reader", {
+          fps: 10,
+          qrbox: 250,
+        });
+
+        html5QrcodeScanner.render(onScanSuccess);
+      </script>
+    </div>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/service-worker.js");
+      }
+    </script>
+  </body>
 </html>

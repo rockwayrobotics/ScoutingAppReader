@@ -1,53 +1,53 @@
-*{
+* {
   margin: 0;
   padding: 0;
 }
-#reader__scan_region{
+#reader__scan_region {
   height: 450px;
   width: 600px;
   border-radius: 1rem;
 }
-#reader__scan_region > img{
+#reader__scan_region > img {
   filter: invert(1);
   display: block;
   margin: auto auto auto auto;
   height: 100%;
   user-select: none;
 }
-#reader__scan_region > br{
+#reader__scan_region > br {
   display: none;
 }
-#reader > div:nth-child(1) > img{
+#reader > div:nth-child(1) > img {
   filter: invert(1);
   user-select: none;
   display: none;
 }
-body{
+body {
   font-family: monospace;
   background-color: #101010;
   color: white;
   padding: 2rem;
   margin: 0;
 }
-h1{
-  color: #A71F28;
+h1 {
+  color: #a71f28;
   font-size: 2rem;
   margin-bottom: 1rem;
 }
-h3{
+h3 {
   margin-block: 1rem;
 }
-#reader{
-  background: linear-gradient(0deg, #0F0F0F, #1f1f1f);
-  box-shadow: inset 0 0 0 2px #A71F28;
+#reader {
+  background: linear-gradient(0deg, #0f0f0f, #1f1f1f);
+  box-shadow: inset 0 0 0 2px #a71f28;
   border: none !important;
   padding: 1rem;
   border-radius: 1rem;
 }
-#reader__dashboard{
+#reader__dashboard {
   background: #101010;
   padding: 1rem;
-  box-shadow: inset 0 0 0 2px #A71F28;
+  box-shadow: inset 0 0 0 2px #a71f28;
   border-radius: 1rem;
   position: fixed;
   top: 1rem;
@@ -55,8 +55,8 @@ h3{
   width: fit-content !important;
   height: 80px;
 }
-#html5-qrcode-button-camera-permission{
-  background: #A71F28;
+#html5-qrcode-button-camera-permission {
+  background: #a71f28;
   padding: 0.5rem;
   border: none;
   border-radius: 0.1rem;
@@ -64,7 +64,7 @@ h3{
   color: white;
   font-size: 1rem;
 }
-#html5-qrcode-select-camera{
+#html5-qrcode-select-camera {
   background: #555555;
   padding: 0.5rem;
   border: none;
@@ -73,8 +73,8 @@ h3{
   color: white;
   font-size: 1rem;
 }
-#html5-qrcode-button-camera-start{
-  background: #A71F28;
+#html5-qrcode-button-camera-start {
+  background: #a71f28;
   padding: 0.5rem;
   border: none;
   border-radius: 0.1rem;
@@ -82,14 +82,14 @@ h3{
   color: white;
   font-size: 1rem;
 }
-#html5-qrcode-anchor-scan-type-change{
+#html5-qrcode-anchor-scan-type-change {
   display: block;
   padding-block: 0.5rem;
   width: 100%;
   text-align: center;
 }
-#html5-qrcode-button-camera-stop{
-  background: #A71F28;
+#html5-qrcode-button-camera-stop {
+  background: #a71f28;
   padding: 0.5rem;
   border: none;
   border-radius: 0.1rem;
@@ -97,13 +97,13 @@ h3{
   color: white;
   font-size: 1rem;
 }
-tbody{
+tbody {
   background: #202020;
   padding: 10px;
   border: none;
   color: white;
 }
-td{
+td {
   padding: 10px;
   border: 1px solid #404040;
   color: white;
